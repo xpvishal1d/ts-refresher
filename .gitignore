@@ -1,0 +1,38 @@
+# dependencies
+node_modules/
+
+# build output
+dist/
+build/
+coverage/
+
+# environment
+.env
+.env.local
+.env.*.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# system files
+.DS_Store
+Thumbs.db
+
+# editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# TypeScript
+*.tsbuildinfo
+
+# local runtime files
+npm-debug.log*
+"# End of .gitignore"
