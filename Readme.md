@@ -140,7 +140,7 @@ _**Next 3 Topic In TS**_
   **Exaple Code- Array In TS**
 
 ```typescript
-const chaiFlavoures: string[] = ["Massala", "Adrak"];
+const chaiflavores: string[] = ["Massala", "Adrak"];
 const chaiPrice: number[] = [20, 54];
 
 const rating: Array<number> = [4.5, 1];
@@ -277,39 +277,203 @@ t.push("extra"); // this is uunexpected error
     - `get` and `set` are inbuilt typescript utility.
 
   _**Also Covered**_
-    1. Static -
-       ```typescript
-       class EkChai {
-         static shopName = "Chaicode caffe";
+  1. Static -
+     ```typescript
+     class EkChai {
+       static shopName = "Chaicode caffe";
 
-         constructor(public flavour: string) {}
-       }
+       constructor(public flavor: string) {}
+     }
 
-       console.log(EkChai.shopName);
-       ```
-    2. Abstract -
-       ```typescript
-       abstract class Drink {
-         abstract make(): void;
-       }
+     console.log(EkChai.shopName);
+     ```
+  2. Abstract -
+     ```typescript
+     abstract class Drink {
+       abstract make(): void;
+     }
 
-       class MyChai extends Drink {
-         make() {
-           console.log("Chai bani");
-         }
+     class MyChai extends Drink {
+       make() {
+         console.log("Chai bani");
        }
-       ```
-    3. Composition -
-       ```typescript
-       class Heater {
-         heat() {}
-       }
+     }
+     ```
+  3. Composition -
+     ```typescript
+     class Heater {
+       heat() {}
+     }
 
-       class ChaiMaker {
-         constructor(private heater: Heater) {}
+     class ChaiMaker {
+       constructor(private heater: Heater) {}
 
-         make() {
-           this.heater.heat;
-         }
+       make() {
+         this.heater.heat;
        }
-       ```
+     }
+     ```
+
+## Next is most imp `interface` And `Generics`
+
+### Most used thing Day 8
+
+- **It is used for shapinfg the objects and functions**
+- Leared about interface -> this is very similer to type you will use it like
+  type but creation is little bit different like no need to use semi-collon.
+
+  - It can work with simply objects and function you can shape your object,
+    shape your functions and shape your objects methods
+  ```typescript
+  // simple working
+
+  interface Chai {
+    flavor: string;
+    price: number;
+    milk?: boolean;
+  }
+
+  const masalaChai: Chai = {
+    flavor: "masala",
+    price: 30,
+  };
+
+  // readonly
+
+  interface Shop {
+    readonly id: number;
+    name: string;
+  }
+
+  const s: Shop = {
+    id: 1,
+    name: "chai code caffe",
+  };
+
+  // s.id = 12 --- NOT ALLOWED
+
+  // With the function
+  interface DiscountCalculater {
+    (price: number): number;
+  }
+
+  const apply50: DiscountCalculater = (p) => p * 0.5;
+
+  // apply50(5)
+
+  // With the object methods
+
+  interface TeaMachine {
+    start(): void;
+    stop(): void;
+  }
+
+  const machine: TeaMachine = {
+    start() {
+      console.log("start");
+    },
+    stop() {
+      console.log("stop");
+    },
+  };
+  ```
+
+- **Index signature** Using this you can shape your object keys and values both
+  -> Its helpfull like when you create your object you knew the keys type like
+  its a flavor or its a animal name
+
+  ```typescript
+  // index signature
+
+  interface ChaiRating {
+    [flavor: string]: number;
+  }
+
+  const ratings: ChaiRating = {
+    masala: 4.5,
+    ginger: 5,
+  };
+  ```
+
+- **Interface merging** When you create interfaces with same name it wi;; be
+  merged. Like you have two interface named with `User` and used it in a
+  object creation so need to define the both interce property.
+
+  ```typescript
+  // interface merging
+
+  interface User {
+    name: string;
+  }
+  interface User {
+    age: number;
+  }
+
+  const u: User = {
+    name: "Hitesh",
+    age: 42,
+  };
+  ```
+
+- **Interface extends** You can extends the two interface it will ask both
+  interface property while using.
+  ```typescript
+  // Extends
+  interface A {
+    a: string;
+  }
+
+  interface B {
+    B: string;
+  }
+
+  interface C extends A, B {
+    c: string;
+  }
+  ```
+
+***Generics***
+- Its use for like interface for template but very different from interface you can name type and put a dynamic variable and when you will use it can pull data type in variable. 
+  ```typescript
+  function wrapInArray<T>(item: T): T[] {
+    return [item];
+  }
+
+  wrapInArray("Masaala");
+
+  wrapInArray("maasala");
+  wrapInArray(44);
+  wrapInArray({ flavor: "ginger" });
+
+  function pair<A, B>(a: A, b: B): [A, B] {
+    return [a, b];
+  }
+
+  pair("maasala", 20);
+  pair("ginger", { flavor: "ginger" });
+
+  // genric interface
+
+  interface Box<T> {
+    content: T;
+  }
+
+  const numberBox: Box<number> = {
+    content: 45,
+  };
+
+  // real world example
+
+  interface ApiPromice<T> {
+      status: number,
+      data : T
+  }
+
+  const responce : ApiPromice<{flavor:string}> = {
+      status: 200,
+      data : {flavor: "maasala"}
+  }
+  ```
+
+  ## type declaraton and web request
+

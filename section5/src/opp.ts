@@ -1,14 +1,14 @@
 class Chai {
-  flavour: string;
+  flavor: string;
   // price:number;
 
-  // constructor(flavour:string, price: number){
-  //     this.flavour=flavour
+  // constructor(flavor:string, price: number){
+  //     this.flavor=flavor
   //     this.price= price
   // }
 
-  constructor(flavour: string) {
-    this.flavour = flavour;
+  constructor(flavor: string) {
+    this.flavor = flavor;
     console.log(this);
   }
 }
@@ -16,12 +16,12 @@ class Chai {
 // const masalaChai = new Chai("ginger", 20)
 const masalaChai = new Chai("ginger");
 
-masalaChai.flavour = "masala";
+masalaChai.flavor = "masala";
 
 // access modifier
 
 class Chaia {
-  public flavour: string = "Masala";
+  public flavor: string = "Masala";
   private secretIngredients: string = "Cardamom";
 
   reveal() {
@@ -83,7 +83,7 @@ c12.sugar = 3;
 class EkChai {
   static shopName = "Chaicode caffe";
 
-  constructor(public flavour: string) {}
+  constructor(public flavor: string) {}
 }
 
 console.log(EkChai.shopName);

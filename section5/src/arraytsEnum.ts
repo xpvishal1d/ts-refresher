@@ -1,4 +1,4 @@
-const chaiFlavoures: string[] = ["Massala", "Adrak"];
+const chaiflavores: string[] = ["Massala", "Adrak"];
 const chaiPrice: number[] = [20, 54];
 
 const rating: Array<number> = [4.5, 1];
